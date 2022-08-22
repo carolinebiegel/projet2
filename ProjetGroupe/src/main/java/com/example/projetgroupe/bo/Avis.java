@@ -1,13 +1,21 @@
 package com.example.projetgroupe.bo;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
+
+
+@Entity @Getter  @Setter @NoArgsConstructor
 public class Avis {
 
+    @Id
     private long id;
     private int note;
     private String commentaire;
+
+    @ManyToOne
     private Membres membres;
 
 }
