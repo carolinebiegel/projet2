@@ -17,10 +17,10 @@ public class Articles {
     private long id;
     private LocalDate datePublication;
     private String titre;
+    private String genre;
+    private String categorie;
     private String description;
     private String etat;
 
-    @ManyToOne
-    private Categories categories;
 
 }

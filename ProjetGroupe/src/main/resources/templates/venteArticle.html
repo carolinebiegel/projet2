@@ -1,0 +1,91 @@
+<html
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://thymeleaf.org">
+<!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
+
+<head th:replace="fragments/template :: head('Ajout article)"></head>
+
+<body>
+	<!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
+	<nav th:replace="fragments/template :: nav"></nav>
+
+	<!-- section pour afficher les messages de succès ou d'erreur -->
+	<section th:replace="fragments/template :: messages"></section>
+
+	<h1>Vendre un Article</h1>
+
+	<!-- th:object="${film}" : mon formulaire va envoyer un objet "film" de type Participant (qui doit être pésent dans le modèle) rempli -->
+	<form th:action="@{/admin/vendre}" method="post" th:object="${article}">
+		<section class="form-element">
+			<label for="titre">Titre : </label>
+			<!-- à la place de name j'utilise th:field -->
+			<input id="titre" type="text" th:field="*{titre}" />
+			<span class="error" th:errors="*{titre}"></span>
+		</section>
+
+		<section class="form-element">
+			<label for="datePublication">Date de Publication : </label>
+			<!-- à la place de name j'utilise th:field -->
+			<input id="datePublication" type="date" th:field="*{datePublication}" />
+			<span class="error" th:errors="*{datePublication}"></span>
+		</section>
+
+		<section class="form-element">
+			<label for="description">Description : </label>
+			<!-- à la place de name j'utilise th:field -->
+			<textarea id="description" th:field="*{description}" cols="30" rows="5"></textarea>
+			<span class="error" th:errors="*{description}"></span>
+		</section>
+
+
+		<label for="etat">Etat :</label>
+
+		<select name="etat" id="etat">
+			<option value="">--Please choose an option--</option>
+			<option value="NeufEtiquette">Neuf avec etiquette</option>
+			<option value="Neuf">Neuf sans etiquette</option>
+			<option value="Tres">Tres bon etat</option>
+			<option value="Bon">Bon etat</option>
+			<option value="Satisfaisant">Satisfaisant</option>
+		</select>
+
+
+		<label for="categorie">Categorie :</label>
+
+		<select name="categorie" id="categorie">
+			<option value="">--Please choose an option--</option>
+			<option value="Hauts">Hauts</option>
+			<option value="Bas">Bas</option>
+			<option value="Chaussures">Chaussures</option>
+			<option value="Accessoires">Accessoires</option>
+		</select>
+
+		<section class="form-element">
+			<label for="genreF">Femme : </label>
+			<!-- à la place de name j'utilise th:field -->
+			<input id="genreF" type="checkbox" th:field="*{article.genre}" />
+			<span class="error" th:errors="*{article.genre}"></span>
+		</section>
+
+		<section class="form-element">
+			<label for="genreH">Homme : </label>
+			<!-- à la place de name j'utilise th:field -->
+			<input id="genreH" type="checkbox" th:field="*{article.genre}" />
+			<span class="error" th:errors="*{article.genre}"></span>
+		</section>
+
+
+		<section class="form-element">
+			<label for="genreE">Enfant : </label>
+			<!-- à la place de name j'utilise th:field -->
+			<input id="genreE" type="checkbox" th:field="*{article.genre}" />
+			<span class="error" th:errors="*{article.genre}"></span>
+		</section>
+
+
+		<button>Validation</button>
+	</form>
+	
+</body>
+
+</html>
