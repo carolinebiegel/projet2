@@ -1,0 +1,64 @@
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments/template :: head('Affichage des articles')">
+    <nav th:replace="fragments/template :: nav"></nav>
+
+</head>
+
+<body>
+
+
+<!-- section pour afficher les messages de succès ou d'erreur -->
+<section th:replace="fragments/template :: messages"></section>
+
+
+<h2>Ajouter un avis</h2>
+
+<!-- th:object="${avis}" : mon formulaire va envoyer un objet "avis" de type Avis (qui doit être pésent dans le modèle) rempli -->
+<!-- Pas besoin de champs de formulaire pour Membre et Film car on peut retrouver ces informations dans le controller-->
+
+<!-- ne pas oublier d'ajouter ?filmId=... à l'url du POST (car on veut récupérer l'id du film dans le POST également) -->
+<form th:action="@{admin/avis}" method="post" th:object="${avis}">
+
+    <!-- Note -->
+    <section class="form-element">
+        <label for="note">Note (/5) : </label>
+        <!-- à la place de name j'utilise th:field -->
+        <input id="note" type="number" th:field="*{note}"/>
+        <span class="error" th:errors="*{note}"></span>
+    </section>
+
+    <!-- Commentaire -->
+    <section class="form-element">
+        <label for="commentaire">Commentaire : </label>
+        <!-- à la place de name j'utilise th:field -->
+        <textarea id="commentaire" th:field="*{commentaire}" cols="30" rows="10"></textarea>
+        <span class="error" th:errors="*{commentaire}"></span>
+    </section>
+
+    <button>Validation</button>
+
+
+    <h1>Voici les avis du profil :</h1>
+    <table class="listeAvis">
+        <tbody>
+        <tr>
+            <td> Id</td>
+            <td> Note</td>
+            <td> Commentaire</td>
+        </tr>
+        </tbody>
+        <tbody>
+        <tr th:each="avis : ${listeAvis}">
+            <td th:text="${avis.id}"></td>
+            <td th:text="${avis.note}"></td>
+            <td th:text="${avis.commentaire}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</form>
+</body>
+</html>

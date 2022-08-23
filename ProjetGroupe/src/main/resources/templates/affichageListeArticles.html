@@ -19,24 +19,33 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Date publication</th>
 				<th>Article</th>
+				<th>Date publication</th>
+				<th>Genre</th>
+				<th>Categorie</th>
 				<th>Description</th>
 				<th>Etat</th>
+				<th>Membre</th>
 			</tr>
 		</thead>
-		<!--
+
 		<tbody>
-			<tr th:each="film : ${listeFilms}">
-				<td th:text="${film.titre}"></td>
-				<td th:text="${film.dateSortie}"></td>
-				<td th:text="${film.genre.libelle}"></td>
-				<td th:text="${film.duree}"></td>
-				<td><a th:href="|filmDetail?id=${film.id}|">détail</a></td>
+			<tr th:each="article : ${listeArticles}">
+				<td th:text="${article.titre}"></td>
+				<td th:text="${article.datePublication}"></td>
+				<td th:text="${article.genre}"></td>
+				<td th:text="${article.categorie}"></td>
+				<td th:text="${article.description}"></td>
+				<td th:text="${article.etat}"></td>
+				<!--  <td><a th:href="|filmDetail?id=${film.id}|">détail</a></td> -->
 			</tr>
 		</tbody>
-		-->
+
 	</table>
+
+<a href="/avis">Voir les avis du vendeur</a>
+
+
 	
 </body>
 

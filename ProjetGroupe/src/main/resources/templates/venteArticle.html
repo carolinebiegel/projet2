@@ -3,7 +3,7 @@
 		xmlns:th="http://thymeleaf.org">
 <!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
 
-<head th:replace="fragments/template :: head('Ajout article)"></head>
+<head th:replace="fragments/template :: head('Ajout articles')"></head>
 
 <body>
 	<!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
@@ -14,11 +14,11 @@
 
 	<h1>Vendre un Article</h1>
 
-	<!-- th:object="${film}" : mon formulaire va envoyer un objet "film" de type Participant (qui doit être pésent dans le modèle) rempli -->
+
 	<form th:action="@{/admin/vendre}" method="post" th:object="${article}">
+
 		<section class="form-element">
 			<label for="titre">Titre : </label>
-			<!-- à la place de name j'utilise th:field -->
 			<input id="titre" type="text" th:field="*{titre}" />
 			<span class="error" th:errors="*{titre}"></span>
 		</section>
@@ -60,26 +60,11 @@
 			<option value="Accessoires">Accessoires</option>
 		</select>
 
-		<section class="form-element">
-			<label for="genreF">Femme : </label>
-			<!-- à la place de name j'utilise th:field -->
-			<input id="genreF" type="checkbox" th:field="*{article.genre}" />
-			<span class="error" th:errors="*{article.genre}"></span>
-		</section>
 
-		<section class="form-element">
-			<label for="genreH">Homme : </label>
-			<!-- à la place de name j'utilise th:field -->
-			<input id="genreH" type="checkbox" th:field="*{article.genre}" />
-			<span class="error" th:errors="*{article.genre}"></span>
-		</section>
-
-
-		<section class="form-element">
-			<label for="genreE">Enfant : </label>
-			<!-- à la place de name j'utilise th:field -->
-			<input id="genreE" type="checkbox" th:field="*{article.genre}" />
-			<span class="error" th:errors="*{article.genre}"></span>
+		<section class="form-element"  th:each="genre:${listeGenres}">
+			<label th:for="${genre}" th:text="${genre}"></label>
+			<input th:id=${genre} type="checkbox" th:field="*{genre}" th:value="${genre}" />
+			<span class="error" th:errors="*{genre}"></span>
 		</section>
 
 
