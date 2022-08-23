@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ArticleService {
 
-    public void addArticle (Articles articles);
+    public void addArticle (Articles article);
 
     public List<Articles> listeArticles();
 

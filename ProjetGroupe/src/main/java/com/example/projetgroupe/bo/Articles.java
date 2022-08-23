@@ -16,7 +16,7 @@ public class Articles {
     private long id;
     private LocalDate datePublication;
     private String titre;
-    private String genre;
+    private Genres genre;
     private String categorie;
     private String description;
     private String etat;
