@@ -19,9 +19,9 @@ import java.util.List;
  */
 @Service
 public class MyUserDetailsService implements UserDetailsService {
-	List<Membres> ListeMembres = new ArrayList<>();
+	//List<Membres> ListeMembres = new ArrayList<>();
 
-	@Autowired
+
 	private MembresService membresService;
 
 	/**
@@ -30,7 +30,7 @@ public class MyUserDetailsService implements UserDetailsService {
 	public MyUserDetailsService(MembresService membresService) {
 		this.membresService = membresService;
 		try {
-			membresService.addMembres(new Membres("vanille", "fraise"));
+			membresService.addMembres(new Membres("vanille", "fraise", true));
 		} catch (Exception e) {
 			System.out.println("Utilisateur admin déjà existant");
 		}
@@ -47,15 +47,15 @@ public class MyUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) {
 
 		// 1. Je recupère le membre qui correspond au username
-		Membres membre = membresService.getMembresById(username);
+		Membres membres = membresService.getMembresById(username);
 
 		// Si jamais le membre est null, je lance une exception
-		if (membre == null) {
+		if (membres == null) {
 			throw new UsernameNotFoundException(username);
 		}
 		// Sinon, je renvoie une instance de Utilisateur à partir de cet objet Membre
 		else {
-			return new Utilisateur(membre);
+			return new Utilisateur(membres);
 		}
 	}
 

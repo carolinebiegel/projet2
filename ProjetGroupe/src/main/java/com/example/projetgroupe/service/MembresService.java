@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface MembresService {
 
-    public void addMembres (Membres membres);
+    public void addMembres (Membres membres) throws Exception;
 
     public List<Membres> listeMembres();
 

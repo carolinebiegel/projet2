@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MembresController {
 
+
     @GetMapping("/profil")
 
     private String getProfil (Model model) {
