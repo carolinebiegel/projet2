@@ -1,0 +1,34 @@
+<html>
+<!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
+
+<head th:replace="fragments/template :: head('Gestion des membres')"></head>
+
+<body>
+	<!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
+	<nav th:replace="fragments/template :: nav"></nav>
+
+	<!-- section pour afficher les messages de succès ou d'erreur -->
+	<section th:replace="fragments/template :: messages"></section>
+
+	<h1>Mon Profil</h1>
+
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Pseudo</th>
+				<th>Password</th>
+				<th>avis</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="membres : ${listeMembres}">
+				<td th:text="${membres.pseudo}"></td>
+				<td th:text="${membres.password}"></td>
+				<td th:text="${membre.avis}"></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+
+</html>
