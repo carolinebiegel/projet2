@@ -13,11 +13,11 @@ public class ArticleServiceImpl implements ArticleService {
     private int compteur = 0;
 
     @Override
-    public void addArticle(Articles articles) {
+    public void addArticle(Articles article) {
         compteur++;
-        articles.setId(compteur);
+        article.setId(compteur);
 
-        articlesListe.add(articles);
+        articlesListe.add(article);
     }
 
     @Override
@@ -27,9 +27,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Articles getArticleById(long id) {
-        for (Articles articles : articlesListe) {
-            if (articles.getId() == id) {
-                return articles;
+        for (Articles article : articlesListe) {
+            if (article.getId() == id) {
+                return article;
             }
         }
         // si pas trouvé
