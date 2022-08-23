@@ -1,6 +1,5 @@
 package com.example.projetgroupe.service;
 
-import com.example.projetgroupe.bo.Articles;
 import com.example.projetgroupe.bo.Membres;
 
 import java.util.List;

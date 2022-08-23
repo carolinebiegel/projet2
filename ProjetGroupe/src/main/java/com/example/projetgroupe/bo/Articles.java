@@ -7,12 +7,11 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 
-@Setter
-@Getter
-@Entity
+@Setter @Getter @Entity
 public class Articles {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private LocalDate datePublication;
     private String titre;

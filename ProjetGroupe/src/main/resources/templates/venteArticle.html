@@ -1,19 +1,15 @@
 <html
 		xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:th="http://thymeleaf.org">
-<!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
 
 <head th:replace="fragments/template :: head('Ajout articles')"></head>
 
 <body>
-	<!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
 	<nav th:replace="fragments/template :: nav"></nav>
 
-	<!-- section pour afficher les messages de succès ou d'erreur -->
 	<section th:replace="fragments/template :: messages"></section>
 
 	<h1>Vendre un Article</h1>
-
 
 	<form th:action="@{/admin/vendre}" method="post" th:object="${article}">
 

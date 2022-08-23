@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/admin/avis")
 public class AvisController {
 
     @Autowired
     private AvisService avisService;
 
-    @GetMapping("/avis")
+    @GetMapping
     public String getAvis(Model model) {
         model.addAttribute("avis", new Avis());
         return "avisMembre";
