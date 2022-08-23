@@ -1,5 +1,6 @@
 package com.example.projetgroupe.bo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,8 +18,13 @@ public class Membres {
     private String pseudo;
     private String password;
 
+    private boolean admin;
+
     @OneToMany
     private List<Avis> avis;
 
-
+    public Membres(String pseudo, String password) {
+        this.pseudo = pseudo;
+        this.password = password;
+    }
 }
