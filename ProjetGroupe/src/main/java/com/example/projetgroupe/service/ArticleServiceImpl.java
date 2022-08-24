@@ -30,4 +30,9 @@ public class ArticleServiceImpl implements ArticleService {
     public Articles getArticleById(long id) {
         return articleRepository.findById(id).get();
     }
+
+    @Override
+    public  List<Articles> findArticleByMembre(String pseudo) {
+        return articleRepository.findArticlesByMembresPseudo(pseudo);
+    }
 }

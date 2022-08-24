@@ -1,7 +1,9 @@
 package com.example.projetgroupe.service;
 
 import com.example.projetgroupe.bo.Avis;
-import com.example.projetgroupe.bo.Membres;
+
+import com.example.projetgroupe.repository.AvisRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
@@ -11,18 +13,25 @@ import java.util.List;
 @Service
 public class AvisServiceImpl implements AvisService{
 
+    @Autowired
+    private AvisRepository avisRepository;
 
     private List<Avis> listeAvis = new ArrayList<>();
 
+
     @Override
-    public List<Membres> listeMembres() {
-        return AvisRepository.findAll();
+    public void addAvis(Avis avis) {
+
     }
 
     @Override
-    public Membres getMembresById(String pseudo) {
-        return membresRepository.findById(pseudo).get();
+    public List<Avis> listeAvis() {
+        return null;
+    }
 
+    @Override
+    public List<Avis> findAvisByMembre(String pseudo) {
+        return avisRepository.findAvisByMembresPseudo(pseudo);
     }
 
 

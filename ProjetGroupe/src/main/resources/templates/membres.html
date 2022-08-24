@@ -18,19 +18,37 @@
 			<tr>
 				<th>Pseudo</th>
 				<th>Password</th>
-				<th>Membre</th>
-				<th>avis</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="membre : ${listeMembres}">
 				<td th:text="${membre.pseudo}"></td>
 				<td th:text="${membre.password}"></td>
-				<td th:text="${membre.admin}"></td>
-				<td th:text="${membre.avis}"></td>
 			</tr>
 		</tbody>
 	</table>
+
+	<div th:if="${membre.listeAvis}">
+		<h2>Liste des avis</h2>
+
+		<ul>
+			<li th:each="avis : ${membre.listeAvis}" th:text="${avis.commentaire}"></li>
+		</ul>
+	</div>
+
+	<div th:if="${membre.listeArticles}">
+		<h2>Liste des articles</h2>
+
+		<ul>
+			<li th:each="article : ${membre.listeArticles}" th:text="${article.titre}"></li>
+		</ul>
+
+	</div>
+
+
+
+
 </body>
+
+
 
 </html>

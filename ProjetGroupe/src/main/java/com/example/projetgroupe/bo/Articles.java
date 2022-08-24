@@ -13,6 +13,7 @@ public class Articles {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private LocalDate datePublication;
     private String titre;
     private Genres genre;
@@ -20,5 +21,7 @@ public class Articles {
     private String description;
     private String etat;
 
+    @ManyToOne
+    private Membres membres;
 
 }

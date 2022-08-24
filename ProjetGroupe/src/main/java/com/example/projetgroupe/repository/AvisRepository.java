@@ -1,12 +1,13 @@
 package com.example.projetgroupe.repository;
 
 import com.example.projetgroupe.bo.Articles;
+import com.example.projetgroupe.bo.Avis;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ArticleRepository extends JpaRepository<Articles, Long> {
+public interface AvisRepository extends JpaRepository<Avis, Long> {
 
-    public List<Articles> findArticlesByMembresPseudo(String pseudo);
+    public List<Avis> findAvisByMembresPseudo(String pseudo);
 
 }
