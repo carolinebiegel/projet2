@@ -32,7 +32,7 @@
 
 
         <section class="element-membre">
-            <label for="admin">Voulez vous être membre pour 10€/mois ?</label>
+            <label for="admin">Voulez-vous être membre pour 10€/mois ?</label>
             <!-- on va utiliser th:field a la place de name sur les input-->
             <input type="checkbox" th:field="*{admin}" id="admin">
         </section>
@@ -40,25 +40,6 @@
         <button type="submit" class="btn btn-primary">Création du profil</button>
     </form>
 
-    <h2>Affichage des profils crées :</h2>
-
-    <table class="listeProfils">
-        <tbody>
-        <tr>
-            <td> Pseudo</td>
-            <td> Mot de passe</td>
-            <td> Admin</td>
-
-        </tr>
-        </tbody>
-        <tbody>
-        <tr th:each="membre : ${listeMembres}">
-            <td th:text="${membre.pseudo}"></td>
-            <td th:text="${membre.password}"></td>
-            <td th:text="${membre.admin}"></td>
-
-        </tr>
-    </table>
     </tbody>
 </div>
 
