@@ -1,6 +1,7 @@
 package com.example.projetgroupe.service;
 
 import com.example.projetgroupe.bo.Avis;
+import com.example.projetgroupe.bo.Membres;
 import org.springframework.stereotype.Service;
 
 
@@ -13,18 +14,15 @@ public class AvisServiceImpl implements AvisService{
 
     private List<Avis> listeAvis = new ArrayList<>();
 
-    private int compteur = 0;
-
     @Override
-    public void addAvis(Avis avis) {
-        compteur++;
-        avis.setId(compteur);
-        listeAvis.add(avis);
+    public List<Membres> listeMembres() {
+        return AvisRepository.findAll();
     }
 
     @Override
-    public List<Avis> listeAvis() {
-        return listeAvis;
+    public Membres getMembresById(String pseudo) {
+        return membresRepository.findById(pseudo).get();
+
     }
 
 
