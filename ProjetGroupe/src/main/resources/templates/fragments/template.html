@@ -13,7 +13,7 @@
 	<nav th:fragment="nav">
 		<ul>
 		<li><a href="/">Liste des Articles</a></li>
-		<li sec:authorize="hasRole('admin')"><a href="/profil">Profil</a></li>
+		<li sec:authorize="hasRole('admin')"><a href="/admin/profil">Profil</a></li>
 		<li sec:authorize="hasRole('admin')"><a href="/admin/vendre">Vendre</a></li>
 		<li sec:authorize="hasRole('admin')"><a href="/admin/creationProfil">Création Profil</a></li>
 		</ul>
