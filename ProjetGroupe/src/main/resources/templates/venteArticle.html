@@ -1,72 +1,76 @@
 <html
-		xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:th="http://thymeleaf.org">
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://thymeleaf.org">
 
 <head th:replace="fragments/template :: head('Ajout articles')"></head>
 
 <body>
-	<nav th:replace="fragments/template :: nav"></nav>
+<nav th:replace="fragments/template :: nav"></nav>
 
-	<section th:replace="fragments/template :: messages"></section>
+<section th:replace="fragments/template :: messages"></section>
 
-	<h1>Vendre un Article</h1>
+<h1>Vendre un Article</h1>
 
-	<form th:action="@{/admin/vendre}" method="post" th:object="${article}">
+<form th:action="@{/admin/vendre}" method="post" th:object="${article}">
 
-		<section class="form-element">
-			<label for="titre">Titre : </label>
-			<input id="titre" type="text" th:field="*{titre}" />
-			<span class="error" th:errors="*{titre}"></span>
-		</section>
+    <section class="form-element">
+        <label for="titre">Titre : </label>
+        <input id="titre" type="text" th:field="*{titre}"/>
+        <span class="error" th:errors="*{titre}"></span>
+    </section>
 
-		<section class="form-element">
-			<label for="datePublication">Date de Publication : </label>
-			<!-- à la place de name j'utilise th:field -->
-			<input id="datePublication" type="date" th:field="*{datePublication}" />
-			<span class="error" th:errors="*{datePublication}"></span>
-		</section>
+    <section class="form-element">
+        <label for="datePublication">Date de Publication : </label>
+        <!-- à la place de name j'utilise th:field -->
+        <input id="datePublication" type="date" th:field="*{datePublication}"/>
+        <span class="error" th:errors="*{datePublication}"></span>
+    </section>
 
-		<section class="form-element">
-			<label for="description">Description : </label>
-			<!-- à la place de name j'utilise th:field -->
-			<textarea id="description" th:field="*{description}" cols="30" rows="5"></textarea>
-			<span class="error" th:errors="*{description}"></span>
-		</section>
-
-
-		<label for="etat">Etat :</label>
-
-		<select name="etat" id="etat">
-			<option value="">--Please choose an option--</option>
-			<option value="NeufEtiquette">Neuf avec etiquette</option>
-			<option value="Neuf">Neuf sans etiquette</option>
-			<option value="Tres">Tres bon etat</option>
-			<option value="Bon">Bon etat</option>
-			<option value="Satisfaisant">Satisfaisant</option>
-		</select>
+    <section class="form-element">
+        <label for="description">Description : </label>
+        <!-- à la place de name j'utilise th:field -->
+        <textarea id="description" th:field="*{description}" cols="30" rows="5"></textarea>
+        <span class="error" th:errors="*{description}"></span>
+    </section>
 
 
-		<label for="categorie">Categorie :</label>
+    <label for="etat">Etat :</label>
 
-		<select name="categorie" id="categorie">
-			<option value="">--Please choose an option--</option>
-			<option value="Hauts">Hauts</option>
-			<option value="Bas">Bas</option>
-			<option value="Chaussures">Chaussures</option>
-			<option value="Accessoires">Accessoires</option>
-		</select>
-
-
-		<section class="form-element"  th:each="genre:${listeGenres}">
-			<label th:for="${genre}" th:text="${genre}"></label>
-			<input th:id=${genre} type="checkbox" th:field="*{genre}" th:value="${genre}" />
-			<span class="error" th:errors="*{genre}"></span>
-		</section>
+    <select name="etat" id="etat">
+        <option value="">--Please choose an option--</option>
+        <option value="NeufEtiquette">Neuf avec etiquette</option>
+        <option value="Neuf">Neuf sans etiquette</option>
+        <option value="Tres">Tres bon etat</option>
+        <option value="Bon">Bon etat</option>
+        <option value="Satisfaisant">Satisfaisant</option>
+    </select>
 
 
-		<button>Validation</button>
-	</form>
-	
+    <label for="categorie">Categorie :</label>
+
+    <select name="categorie" id="categorie">
+        <option value="">--Please choose an option--</option>
+        <option value="Hauts">Hauts</option>
+        <option value="Bas">Bas</option>
+        <option value="Chaussures">Chaussures</option>
+        <option value="Accessoires">Accessoires</option>
+    </select>
+
+
+    <section class="form-element" th:each="genre:${listeGenres}">
+        <label th:for="${genre}" th:text="${genre}"></label>
+        <input th:id=${genre} type="checkbox" th:field="*{genre}" th:value="${genre}"/>
+        <span class="error" th:errors="*{genre}"></span>
+    </section>
+
+    <section class="form-element">
+        <input type="file" onchange="previewFile()"><br>
+        <img src="" height="200" alt="Prévisualisation de l'image…">
+    </section>
+
+    <button>Validation</button>
+</form>
+
 </body>
 
 </html>
