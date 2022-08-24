@@ -6,24 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/admin/membres")
 public class MembresController {
 
 
     @Autowired
     private MembresService membresService;
 
+
+    @GetMapping("/admin/profil")
+
     private String getProfil (Model model) {
         return "membres";
     }
 
-    @PostMapping
+
+    @PostMapping("/admin/profil")
     private String postMembre(@Valid Membres membres, BindingResult br, Model model) {
 
         // si on a des erreurs de validations, on retourne  le template pour les afficher
