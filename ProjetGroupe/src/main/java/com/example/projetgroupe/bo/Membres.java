@@ -23,8 +23,9 @@ public class Membres {
     @OneToMany
     private List<Avis> avis;
 
-    public Membres(String pseudo, String password) {
+    public Membres(String pseudo, String password, boolean admin) {
         this.pseudo = pseudo;
         this.password = password;
+        this.admin = admin;
     }
 }
