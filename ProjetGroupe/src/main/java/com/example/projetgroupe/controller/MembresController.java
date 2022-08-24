@@ -1,5 +1,6 @@
 package com.example.projetgroupe.controller;
 
+import com.example.projetgroupe.bo.Avis;
 import com.example.projetgroupe.bo.Membres;
 import com.example.projetgroupe.service.MembresService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,13 @@ public class MembresController {
 
     @GetMapping("/admin/profil")
 
-    private String getProfil (Model model) {
+    private String getProfil(Model model) {
         return "membres";
     }
 
     @GetMapping("/creationProfil")
     public String getCreaProfil(Model model) {
-
+        model.addAttribute("membres", new Membres());
         return "creationProfil";
     }
 
@@ -55,9 +56,33 @@ public class MembresController {
         return "redirect:/admin/membres";
     }
 
+    @PostMapping("/creationProfil")
+    private String postAddProfil(@Valid Membres membres, BindingResult br, Model model) {
 
+        // si on a des erreurs de validations, on retourne  le template pour les afficher
+        if (br.hasErrors()) {
+            model.addAttribute("listeMembres", membresService.listeMembres());
+            return "creationProfil";
+        }
 
-
+        // creer le membre via membreService
+        try {
+            membresService.addMembres(membres);
+        }
+        // si jamais ca se passe mal
+        catch (Exception e) {
+            // on ajoute un attribut "erreur" au modèle
+            model.addAttribute("erreur", e.getMessage());
+            model.addAttribute("listeMembres", membresService.listeMembres());
+            return "creationProfil";
+        }
+        return "redirect:/";
+    }
 
 
 }
+
+
+
+
+
