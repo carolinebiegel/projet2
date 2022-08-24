@@ -1,6 +1,5 @@
 package com.example.projetgroupe.controller;
 
-import com.example.projetgroupe.bo.Avis;
 import com.example.projetgroupe.bo.Membres;
 import com.example.projetgroupe.service.MembresService;
 import org.springframework.beans.factory.annotation.Autowired;
