@@ -1,38 +1,33 @@
 package com.example.projetgroupe.service;
 
 import com.example.projetgroupe.bo.Articles;
+import com.example.projetgroupe.repository.ArticleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ArticleServiceImpl implements ArticleService {
 
-    private List<Articles> articlesListe = new ArrayList<>();
-    private int compteur = 0;
+
+    @Autowired
+    private ArticleRepository articleRepository;
+
 
     @Override
     public void addArticle(Articles article) {
-        compteur++;
-        article.setId(compteur);
+        articleRepository.save(article);
 
-        articlesListe.add(article);
     }
 
     @Override
     public List<Articles> listeArticles() {
-        return articlesListe;
+        return articleRepository.findAll();
     }
 
     @Override
     public Articles getArticleById(long id) {
-        for (Articles article : articlesListe) {
-            if (article.getId() == id) {
-                return article;
-            }
-        }
-        // si pas trouvé
-        return null;
+        return articleRepository.findById(id).get();
     }
 }
