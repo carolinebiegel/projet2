@@ -11,6 +11,7 @@ import javax.persistence.*;
 public class Avis {
 
     @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
     private int note;
     private String commentaire;

@@ -15,7 +15,7 @@ public class WebSecurityConfig {
 		/**** Sur quels chemins impose-t-on d'être authentifié ****/
 		http.authorizeRequests()
 		.antMatchers("/admin/**").hasRole("admin") // 1 - Si route /admin/*** => besoin d'avoir le rôle admin
-		.antMatchers("/**").authenticated() // 2 - Sinon, si route /prive/*** => besoin d'être authentifie
+		//.antMatchers("/**").authenticated() // 2 - Sinon, si route /prive/*** => besoin d'être authentifie
 		.anyRequest().permitAll().and() 		// 3 - Sinon, on autorise les autres requêtes
 		/**** On précise qu'on souhaite une authentification username/password ****/
 		.formLogin();

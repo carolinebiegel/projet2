@@ -15,7 +15,7 @@ public class AvisController {
     @Autowired
     private AvisService avisService;
 
-    @GetMapping("/avis")
+    @GetMapping("/admin/avis")
     public String getAvis(Model model) {
         model.addAttribute("avis", new Avis());
         return "avisMembre";

@@ -1,0 +1,66 @@
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://thymeleaf.org">
+<head th:replace="fragments/template :: head('Affichage des profil')">
+
+    <nav th:replace="fragments/template :: nav"></nav>
+
+</head>
+
+<body>
+
+
+<!-- section pour afficher les messages de succès ou d'erreur -->
+<section th:replace="fragments/template :: messages"></section>
+
+<h1>Création du profil :</h1>
+
+<div class="container">
+    <form th:action="@{/creationProfil}" method="post" th:object="${membres}">
+
+        <section class="element-membre">
+            <label for="pseudo">Veuillez saisir votre pseudo</label>
+            <!-- on va utiliser th:field a la place de name sur les input-->
+            <input type="text" th:field="*{pseudo}" id="pseudo">
+        </section>
+
+        <section class="element-membre">
+            <label for="password">Veuillez saisir votre mot de passe</label>
+            <!-- on va utiliser th:field a la place de name sur les input-->
+            <input type="password" th:field="*{password}" id="password">
+        </section>
+
+
+        <section class="element-membre">
+            <label for="admin">Voulez vous être membre pour 10€/mois ?</label>
+            <!-- on va utiliser th:field a la place de name sur les input-->
+            <input type="checkbox" th:field="*{admin}" id="admin">
+        </section>
+
+        <button type="submit" class="btn btn-primary">Création du profil</button>
+    </form>
+
+    <h2>Affichage des profils crées :</h2>
+
+    <table class="listeProfils">
+        <tbody>
+        <tr>
+            <td> Pseudo</td>
+            <td> Mot de passe</td>
+            <td> Admin</td>
+
+        </tr>
+        </tbody>
+        <tbody>
+        <tr th:each="membre : ${listeMembres}">
+            <td th:text="${membre.pseudo}"></td>
+            <td th:text="${membre.password}"></td>
+            <td th:text="${membre.admin}"></td>
+
+        </tr>
+    </table>
+    </tbody>
+</div>
+
+</body>
+</html>

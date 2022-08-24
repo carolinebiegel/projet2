@@ -28,6 +28,8 @@ public class ArticlesController {
     private String getArticleVendre(Model model) {
         model.addAttribute("article", new Articles());
         model.addAttribute("listeGenres", Genres.values());
+
+        majModeleAvecListes(model);
         return "venteArticle";
     }
 
@@ -46,6 +48,7 @@ public class ArticlesController {
         }
         // si jamais ca se passe mal
         catch (Exception e) {
+            model.addAttribute("article", new Articles());
             majModeleAvecListes(model);
             return "venteArticle";
         }
