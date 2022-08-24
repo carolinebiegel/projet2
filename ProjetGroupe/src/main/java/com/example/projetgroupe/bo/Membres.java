@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,10 +22,10 @@ public class Membres {
     private boolean admin;
 
     @OneToMany
-    private List<Avis> avis;
+    private List<Avis> listeAvis;
 
     @OneToMany
-    private List<Articles> articles;
+    private List<Articles> listeArticles;
     
 
     public Membres(String pseudo, String password, boolean admin) {

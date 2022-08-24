@@ -1,8 +1,10 @@
 package com.example.projetgroupe.controller;
 
+import com.example.projetgroupe.bo.Articles;
 import com.example.projetgroupe.bo.Membres;
 import com.example.projetgroupe.security.Utilisateur;
 import com.example.projetgroupe.service.ArticleService;
+import com.example.projetgroupe.service.AvisService;
 import com.example.projetgroupe.service.MembresService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -12,22 +14,28 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
+import java.util.List;
+
 @Controller
 public class MembresController {
     @Autowired
     private MembresService membresService;
 
+    @Autowired
+    private ArticleService articleService;
+
+    @Autowired
+    private AvisService avisService;
 
 
-    @GetMapping("/admin")
-    private String getProfil(Model model) {
-        model.addAttribute("listeMembres", membresService.listeMembres());
-        return "membres";
-    }
 
     @GetMapping("/admin/profil")
-    private String getProfilMembre(String pseudo, Model model) {
-        model.addAttribute("membres", membresService.getMembresById(pseudo));
+    private String getProfil(@AuthenticationPrincipal Utilisateur utilisateurConnecte, Model model) {
+        Membres membre = utilisateurConnecte.getMembre();
+        model.addAttribute("membre", utilisateurConnecte.getMembre());
+
+        membre.setListeAvis(avisService.findAvisByMembre(membre.getPseudo()));
+        membre.setListeArticles(articleService.findArticleByMembre(membre.getPseudo()));
         return "membres";
     }
 
