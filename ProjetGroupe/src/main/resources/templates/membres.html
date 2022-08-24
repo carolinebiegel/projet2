@@ -18,13 +18,15 @@
 			<tr>
 				<th>Pseudo</th>
 				<th>Password</th>
+				<th>Admin</th>
 				<th>avis</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="membres : ${listeMembres}">
-				<td th:text="${membres.pseudo}"></td>
-				<td th:text="${membres.password}"></td>
+			<tr th:each="membre : ${listeMembres}">
+				<td th:text="${membre.pseudo}"></td>
+				<td th:text="${membre.password}"></td>
+				<td th:text="${membre.admin}"></td>
 				<td th:text="${membre.avis}"></td>
 			</tr>
 		</tbody>
