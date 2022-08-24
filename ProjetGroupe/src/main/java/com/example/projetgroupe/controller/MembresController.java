@@ -1,8 +1,11 @@
 package com.example.projetgroupe.controller;
 
 import com.example.projetgroupe.bo.Membres;
+import com.example.projetgroupe.security.Utilisateur;
+import com.example.projetgroupe.service.ArticleService;
 import com.example.projetgroupe.service.MembresService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,15 +16,29 @@ import javax.validation.Valid;
 public class MembresController {
     @Autowired
     private MembresService membresService;
-    @GetMapping("/admin/profil")
+
+
+
+    @GetMapping("/admin")
     private String getProfil(Model model) {
+        model.addAttribute("listeMembres", membresService.listeMembres());
         return "membres";
     }
+
+    @GetMapping("/admin/profil")
+    private String getProfilMembre(String pseudo, Model model) {
+        model.addAttribute("membres", membresService.getMembresById(pseudo));
+        return "membres";
+    }
+
+
     @GetMapping("/creationProfil")
     public String getCreaProfil(Model model) {
         model.addAttribute("membres", new Membres());
         return "creationProfil";
     }
+
+
 
     @PostMapping("/admin/profil")
     private String postMembre(@Valid Membres membres, BindingResult br, Model model) {
@@ -32,6 +49,7 @@ public class MembresController {
         }
         // creer le membre via membreService
         try {
+
             membresService.addMembres(membres);
         }
         // si jamais ca se passe mal

@@ -2,8 +2,12 @@ package com.example.projetgroupe.controller;
 
 import com.example.projetgroupe.bo.Articles;
 import com.example.projetgroupe.bo.Genres;
+import com.example.projetgroupe.bo.Membres;
+import com.example.projetgroupe.security.Utilisateur;
 import com.example.projetgroupe.service.ArticleService;
+import com.example.projetgroupe.service.MembresService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +21,9 @@ public class ArticlesController {
 
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private MembresService membresService;
 
     @GetMapping("/")
     private String getArticles (Model model) {
@@ -34,7 +41,8 @@ public class ArticlesController {
     }
 
     @PostMapping("/admin/vendre")
-    private String postArticle(@Valid Articles article, BindingResult br, Model model) {
+    private String postArticle(@AuthenticationPrincipal Utilisateur utilisateurConnecte, @Valid Articles article, BindingResult br, Model model) {
+
 
         // si on a des erreurs de validations, on retourne  le template pour les afficher
         if (br.hasErrors()) {
@@ -44,6 +52,8 @@ public class ArticlesController {
 
         // creer le participant via participantService
         try {
+
+            article.setMembres(utilisateurConnecte.getMembre());
             articleService.addArticle(article);
         }
         // si jamais ca se passe mal
@@ -55,11 +65,18 @@ public class ArticlesController {
         return "redirect:/";
     }
 
+
+
     /**
      * Pour ne pas se répeter, je refactorise mes ajouts de listes au modèle dans une méthode à part
      */
     private void majModeleAvecListes(Model model) {
         model.addAttribute("listeArticles", articleService.listeArticles());
+        model.addAttribute("listeMembres", membresService.listeMembres());
+    }
+
+    private void addMembreAuModele(Model model, String membreId) {
+        model.addAttribute("membre", membresService.getMembresById(membreId));
     }
 
 

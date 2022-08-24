@@ -20,5 +20,7 @@ public class Articles {
     private String description;
     private String etat;
 
+    @ManyToOne
+    private Membres membres;
 
 }

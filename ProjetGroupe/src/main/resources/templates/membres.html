@@ -18,7 +18,7 @@
 			<tr>
 				<th>Pseudo</th>
 				<th>Password</th>
-				<th>Membre</th>
+				<th>Articles</th>
 				<th>avis</th>
 			</tr>
 		</thead>
@@ -26,11 +26,12 @@
 			<tr th:each="membre : ${listeMembres}">
 				<td th:text="${membre.pseudo}"></td>
 				<td th:text="${membre.password}"></td>
-				<td th:text="${membre.admin}"></td>
 				<td th:text="${membre.avis}"></td>
 			</tr>
 		</tbody>
 	</table>
 </body>
+
+
 
 </html>
