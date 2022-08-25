@@ -1,5 +1,4 @@
 
-<script> type=’text/javascript</script>
 function previewFile() {
     const preview = document.querySelector('img');
     const file = document.querySelector('input[type=file]').files[0];

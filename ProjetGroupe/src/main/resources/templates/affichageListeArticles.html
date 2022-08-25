@@ -1,54 +1,51 @@
 <html
-		xmlns="http://www.w3.org/1999/xhtml"
-		xmlns:th="http://thymeleaf.org">
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://thymeleaf.org">
 
 <!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
 
 <head th:replace="fragments/template :: head('Affichage des articles')"></head>
 
 <body>
-	<!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
-	<nav th:replace="fragments/template :: nav"></nav>
+<!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
+<nav th:replace="fragments/template :: nav"></nav>
 
-	<!-- section pour afficher les messages de succès ou d'erreur -->
-	<section th:replace="fragments/template :: messages"></section>
+<!-- section pour afficher les messages de succès ou d'erreur -->
+<section th:replace="fragments/template :: messages"></section>
 
-	<h1>Affichage des articles</h1>
-
-	
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Article</th>
-				<th>Date publication</th>
-				<th>Genre</th>
-				<th>Categorie</th>
-				<th>Description</th>
-				<th>Etat</th>
-				<th>Membre</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			<tr th:each="article : ${listeArticles}">
-				<td th:text="${article.titre}"></td>
-				<td th:text="${article.datePublication}"></td>
-				<td th:text="${article.genre}"></td>
-				<td th:text="${article.categorie}"></td>
-				<td th:text="${article.description}"></td>
-				<td th:text="${article.etat}"></td>
-				<td th:each="membre : ${article.membres}" th:text="${membre.pseudo}"></td>
+<h1>Affichage des articles</h1>
 
 
-			</tr>
-		</tbody>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Article</th>
+        <th>Date publication</th>
+        <th>Genre</th>
+        <th>Categorie</th>
+        <th>Description</th>
+        <th>Etat</th>
+        <th>Membre</th>
+    </tr>
+    </thead>
 
-	</table>
+    <tbody>
+    <tr th:each="article : ${listeArticles}">
+        <td th:text="${article.titre}"></td>
+        <td th:text="${article.datePublication}"></td>
+        <td th:text="${article.genre}"></td>
+        <td th:text="${article.categorie}"></td>
+        <td th:text="${article.description}"></td>
+        <td th:text="${article.etat}"></td>
+        <td th:each="membre : ${article.membres}" th:text="${membre.pseudo}"></td>
+        <td><a th:href="|avisMembre?id=${article.id}|">Voir les avis du vendeur</a></td>
 
-<a href="/admin/avis">Voir les avis du vendeur</a>
+    </tr>
+    </tbody>
+
+</table>
 
 
-	
 </body>
 
 </html>

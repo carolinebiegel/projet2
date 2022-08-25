@@ -1,8 +1,8 @@
 package com.example.projetgroupe.service;
 
-import com.example.projetgroupe.bo.Articles;
+
 import com.example.projetgroupe.bo.Avis;
-import org.springframework.stereotype.Service;
+
 
 import java.util.List;
 
