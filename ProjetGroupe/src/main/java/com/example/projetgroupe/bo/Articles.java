@@ -29,4 +29,5 @@ public class Articles {
     @Column(nullable = true, length = 150)
     private String photos;
 
+
 }

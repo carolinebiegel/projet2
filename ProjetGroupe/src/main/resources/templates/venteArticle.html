@@ -23,9 +23,9 @@
     </section>
 
     <section class="form-element">
-        <label for="datePublication">Date de Publication : </label>
 
-        <input id="datePublication" type="date" th:field="*{datePublication}"/>
+        <div for="datePublication" th:text="*{datePublication}"> Date de Publication : </div>
+
         <span class="error" th:errors="*{datePublication}"></span>
     </section>
 
@@ -70,8 +70,7 @@
 <!-- ajout d'une photo a l'article */ -->
 
 
-    <section
-    >
+    <section>
 
         <div>
 
