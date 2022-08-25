@@ -13,7 +13,6 @@
 <!-- section pour afficher les messages de succès ou d'erreur -->
 <section th:replace="fragments/template :: messages"></section>
 
-<<<<<<< HEAD
 	<h1>Affichage des articles</h1>
 
 
@@ -40,42 +39,11 @@
 				<td th:text="${article.description}"></td>
 				<td th:text="${article.etat}"></td>
 				<td th:each="membre : ${article.membres}" th:text="${membre.pseudo}"></td>
+                <td><a th:href="|avisMembre?id=${article.membre.pseudo}|">Voir les avis du vendeur</a></td>
 				<td > <img th:src="|images/${article.photos}|" width="80" /> </td>
-=======
-<h1>Affichage des articles</h1>
 
->>>>>>> 7096bb5534529e2c395139151dbcbd9b88bc7989
-
-<table class="table">
-    <thead>
-    <tr>
-        <th>Article</th>
-        <th>Date publication</th>
-        <th>Genre</th>
-        <th>Categorie</th>
-        <th>Description</th>
-        <th>Etat</th>
-        <th>Membre</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <tr th:each="article : ${listeArticles}">
-        <td th:text="${article.titre}"></td>
-        <td th:text="${article.datePublication}"></td>
-        <td th:text="${article.genre}"></td>
-        <td th:text="${article.categorie}"></td>
-        <td th:text="${article.description}"></td>
-        <td th:text="${article.etat}"></td>
-        <td th:each="membre : ${article.membres}" th:text="${membre.pseudo}"></td>
-        <td><a th:href="|avisMembre?id=${article.membre.pseudo}|">Voir les avis du vendeur</a></td>
-
-
-    </tr>
-    </tbody>
 
 </table>
-
 
 </body>
 

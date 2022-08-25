@@ -2,8 +2,11 @@ package com.example.projetgroupe.controller;
 
 import com.example.projetgroupe.bo.Avis;
 import com.example.projetgroupe.bo.Membres;
+import com.example.projetgroupe.security.Utilisateur;
 import com.example.projetgroupe.service.AvisService;
+import com.example.projetgroupe.service.MembresService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,23 +17,56 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
+@RequestMapping("/admin/avis")
 public class AvisController {
 
     @Autowired
     private AvisService avisService;
 
-    @GetMapping("/admin/avis")
-    public String getAvis(Model model) {
+    @Autowired
+    private MembresService membresService;
+
+    @GetMapping
+    public String getAvis(String membreId, Model model) {
         model.addAttribute("avis", new Avis());
+        this.addMembreAuModel(model, membreId);
         return "avisMembre";
     }
 
-    @PostMapping
-    public String postAvis(Model model, Avis avis) {
-        avisService.addAvis(avis);
-        model.addAttribute("listeAvis", avisService.listeAvis());
-        return "redirect:/admin/avisMembre";
+    private void addMembreAuModel(Model model, String membreId) {
+        model.addAttribute("membre", membresService.getMembresById(membreId));
     }
 
 
-}
+    private String postAddAvis(String membreId, @AuthenticationPrincipal Utilisateur utilisateurConnecte, @Valid Avis avis, BindingResult br, Model model) {
+
+        Membres membres = new Membres();
+
+        if (br.hasErrors()) {
+            majModeleAvecListes(model);
+            return "avisMembre";
+        }
+        try{
+
+            avis.setMembres(utilisateurConnecte.getMembre());
+            avisService.addAvis(avis);
+        } catch (Exception e) {
+            model.addAttribute("erreur", e.getMessage());
+            majModeleAvecListes(model);
+            return "avisMembre";
+        }
+
+
+        return "redirect:/avisMembre?id=" + membres.getPseudo() ;
+    }
+>>>>>>> 7096bb5534529e2c395139151dbcbd9b88bc7989
+
+    private void majModeleAvecListes(Model model) {
+        model.addAttribute("listeMembres", membresService.listeMembres());
+    }
+
+
+    }
+
+
+

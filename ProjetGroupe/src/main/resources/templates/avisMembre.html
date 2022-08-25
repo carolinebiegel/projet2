@@ -40,25 +40,9 @@
     <button>Validation</button>
 
 
-    <h1>Voici les avis du profil :</h1>
-    <table class="listeAvis">
-        <tbody>
-        <tr>
-            <td> Id</td>
-            <td> Note</td>
-            <td> Commentaire</td>
-        </tr>
-        </tbody>
-        <tbody>
-        <tr th:each="avis : ${listeAvis}">
-            <td th:text="${avis.id}"></td>
-            <td th:text="${avis.note}"></td>
-            <td th:text="${avis.commentaire}"></td>
-        </tr>
-        </tbody>
-    </table>
 
 
+    </div>
 </form>
 </body>
 </html>

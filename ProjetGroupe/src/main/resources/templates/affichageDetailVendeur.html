@@ -1,0 +1,39 @@
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://thymeleaf.org">
+
+<!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
+
+<head th:replace="fragments/template :: head('Affichage du vendeur')"></head>
+
+<body>
+<!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
+<nav th:replace="fragments/template :: nav"></nav>
+
+<!-- section pour afficher les messages de succès ou d'erreur -->
+<section th:replace="fragments/template :: messages"></section>
+
+<h1>Détails du vendeur</h1>
+
+<a th:href="|/admin/avis?membreId=${membre.pseudo}|">Ajouter un avis au membre</a>
+
+<div th:if="${membre.listeAvis}">
+    <h2>Liste des avis</h2>
+
+    <ul>
+        <li th:each="avis : ${membre.listeAvis}" th:text="${avis.commentaire}"></li>
+    </ul>
+</div>
+
+<div th:if="${membre.listeArticles}">
+    <h2>Liste des articles</h2>
+
+    <ul>
+        <li th:each="article : ${membre.listeArticles}" th:text="${article.titre}"></li>
+    </ul>
+
+</div>
+
+
+</body>
+</html>
