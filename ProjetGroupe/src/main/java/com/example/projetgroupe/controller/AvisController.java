@@ -12,12 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/admin/avis")
 public class AvisController {
 
     @Autowired
@@ -26,22 +25,28 @@ public class AvisController {
     @Autowired
     private MembresService membresService;
 
-    @GetMapping
+
+    @GetMapping("/avisMembre")
+    private String getAvisVendeur (Model model) {
+        model.addAttribute("listeAvis",avisService.listeAvis());
+        return "affichageDetailVendeur";
+    }
+
+
+    @GetMapping("/admin/avis")
     public String getAvis(String membreId, Model model) {
         model.addAttribute("avis", new Avis());
         this.addMembreAuModel(model, membreId);
         return "avisMembre";
     }
 
-    private void addMembreAuModel(Model model, String membreId) {
-        model.addAttribute("membre", membresService.getMembresById(membreId));
-    }
 
-
-    @PostMapping
-    private String postAddAvis(String membreId, @AuthenticationPrincipal Utilisateur utilisateurConnecte, @Valid Avis avis, BindingResult br, Model model) {
 
         Membres membres = new Membres();
+
+    @PostMapping("/admin/avis")
+    private String postAddAvis(@AuthenticationPrincipal Utilisateur utilisateurConnecte, @Valid Avis avis, BindingResult br, Model model) {
+
 
         if (br.hasErrors()) {
             majModeleAvecListes(model);
@@ -58,7 +63,9 @@ public class AvisController {
         }
 
 
-        return "redirect:/avisMembre?id=" + membres.getPseudo();
+
+        return "redirect:/avisMembre?id=" + avis.getMembres();
+
     }
 
 
@@ -67,7 +74,15 @@ public class AvisController {
     }
 
 
+
 }
+
+    private void addMembreAuModel(Model model, String membreId) {
+        model.addAttribute("membre", membresService.getMembresById(membreId));
+    }
+
+    }
+
 
 
 
