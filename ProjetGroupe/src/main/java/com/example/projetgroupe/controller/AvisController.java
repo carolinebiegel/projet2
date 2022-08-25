@@ -38,7 +38,7 @@ public class AvisController {
     }
 
     @PostMapping
-    private String postAddAvis(String membreId, @AuthenticationPrincipal Utilisateur utilisateurConnecte, @Valid Avis avis, BindingResult br, Model model) {
+    private String postAddAvis(@AuthenticationPrincipal Utilisateur utilisateurConnecte, @Valid Avis avis, BindingResult br, Model model) {
 
         Membres membres = new Membres();
 
