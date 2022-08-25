@@ -75,7 +75,7 @@ public class AvisController {
 
 
 
-}
+
 
     private void addMembreAuModel(Model model, String membreId) {
         model.addAttribute("membre", membresService.getMembresById(membreId));
