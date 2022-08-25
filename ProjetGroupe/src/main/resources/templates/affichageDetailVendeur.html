@@ -13,7 +13,6 @@
 
 <h1>Détails du vendeur</h1>
 
-<!-- <a th:href="|/admin/avis?membreId=${membre.pseudo}|">Ajouter un avis au membre</a> -->
 
 <div th:if="${membre.listeAvis}">
     <h2>Liste des avis</h2>
@@ -32,6 +31,7 @@
 
 </div>
 
+<a th:href="|/admin/avis?membreId=${membre.pseudo}|">Ajouter un avis au membre</a>
 
 </body>
 </html>

@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 
 import javax.validation.Valid;
 
@@ -42,6 +42,8 @@ public class AvisController {
 
 
 
+        Membres membres = new Membres();
+
     @PostMapping("/admin/avis")
     private String postAddAvis(@AuthenticationPrincipal Utilisateur utilisateurConnecte, @Valid Avis avis, BindingResult br, Model model) {
 
@@ -50,7 +52,7 @@ public class AvisController {
             majModeleAvecListes(model);
             return "avisMembre";
         }
-        try{
+        try {
 
             avis.setMembres(utilisateurConnecte.getMembre());
             avisService.addAvis(avis);
@@ -61,7 +63,9 @@ public class AvisController {
         }
 
 
+
         return "redirect:/avisMembre?id=" + avis.getMembres();
+
     }
 
 
@@ -70,11 +74,15 @@ public class AvisController {
     }
 
 
+
+}
+
     private void addMembreAuModel(Model model, String membreId) {
         model.addAttribute("membre", membresService.getMembresById(membreId));
     }
 
     }
+
 
 
 
