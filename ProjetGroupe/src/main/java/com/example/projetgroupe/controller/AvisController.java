@@ -57,32 +57,12 @@ public class AvisController {
         }
 
 
-        return "redirect:/" ;
+        return "redirect:/admin/profil" ;
     }
 
     private void majModeleAvecListes(Model model) {
         model.addAttribute("listeMembres", membresService.listeMembres());
     }
-
-//        // si on a des erreurs de validations, on retourne  le template pour les afficher
-//        if (br.hasErrors()) {
-//            model.addAttribute("listeAvis", avisService.listeAvis());
-//            return "avisMembre";
-//        }
-//
-//        // creer le membre via membreService
-//        try {
-//            avisService.addAvis(avis);
-//        }
-//        // si jamais ca se passe mal
-//        catch (Exception e) {
-//            // on ajoute un attribut "erreur" au modèle
-//            model.addAttribute("erreur", e.getMessage());
-//            model.addAttribute("listeMembres", avisService.listeAvis());
-//            return "avisMembre";
-//        }
-//        return "redirect:/admin/avis";
-//    }
 
 
     }
