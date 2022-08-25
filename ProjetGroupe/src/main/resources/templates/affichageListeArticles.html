@@ -26,6 +26,7 @@
 				<th>Description</th>
 				<th>Etat</th>
 				<th>Membre</th>
+				<th>Image</th>
 			</tr>
 		</thead>
 
@@ -38,7 +39,7 @@
 				<td th:text="${article.description}"></td>
 				<td th:text="${article.etat}"></td>
 				<td th:each="membre : ${article.membres}" th:text="${membre.pseudo}"></td>
-
+				<td > <img th:src="|images/${article.photos}|" width="80" /> </td>
 
 			</tr>
 		</tbody>

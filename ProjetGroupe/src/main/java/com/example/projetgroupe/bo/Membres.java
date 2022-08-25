@@ -26,6 +26,8 @@ public class Membres {
 
     @OneToMany
     private List<Articles> listeArticles;
+
+
     
 
     public Membres(String pseudo, String password, boolean admin) {
