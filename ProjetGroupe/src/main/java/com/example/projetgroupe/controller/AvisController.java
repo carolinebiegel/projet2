@@ -59,7 +59,6 @@ public class AvisController {
 
         return "redirect:/avisMembre?id=" + membres.getPseudo() ;
     }
->>>>>>> 7096bb5534529e2c395139151dbcbd9b88bc7989
 
     private void majModeleAvecListes(Model model) {
         model.addAttribute("listeMembres", membresService.listeMembres());

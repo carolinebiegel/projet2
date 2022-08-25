@@ -26,7 +26,7 @@ public class Articles {
 
   // ajout d'une photo
 
-    @Column(nullable = true, length = 64)
+    @Column(nullable = true, length = 150)
     private String photos;
 
 }
