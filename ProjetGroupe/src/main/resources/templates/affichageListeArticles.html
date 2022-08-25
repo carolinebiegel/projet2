@@ -38,8 +38,7 @@
 				<td th:text="${article.categorie}"></td>
 				<td th:text="${article.description}"></td>
 				<td th:text="${article.etat}"></td>
-				<td th:each="membre : ${article.membres}" th:text="${membre.pseudo}"></td>
-                <td><a th:href="|avisMembre?id=${article.membre.pseudo}|">Voir les avis du vendeur</a></td>
+				<td><a th:href="|avisMembre?id=${membre.pseudo}|" th:each="membre : ${article.membres}" th:text="${membre.pseudo}"></a></td>
 				<td > <img th:src="|images/${article.photos}|" width="80" /> </td>
 
 
