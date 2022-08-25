@@ -1,4 +1,6 @@
-<html>
+<html
+xmlns="http://www.w3.org/1999/xhtml"
+xmlns:th="http://thymeleaf.org">
 
 <!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
 
@@ -14,13 +16,6 @@
 <h1>Détails du vendeur</h1>
 
 
-<div th:if="${membre.listeAvis}">
-    <h2>Liste des avis</h2>
-
-    <ul>
-        <li th:each="avis : ${membre.listeAvis}" th:text="${avis.commentaire}"></li>
-    </ul>
-</div>
 
 <div th:if="${membre.listeArticles}">
     <h2>Liste des articles</h2>
@@ -31,7 +26,38 @@
 
 </div>
 
-<a th:href="|/admin/avis?membreId=${membre.pseudo}|">Ajouter un avis au membre</a>
+
+
+
+<div th:if="${membre.listeAvis}">
+    <h2>Liste des avis</h2>
+
+    <ul>
+        <li th:each="avis : ${membre.listeAvis}">
+            <span th:text="|${avis.auteur.pseudo} a commenté : |"></span>
+            <p class="commentaire" th:text="${avis.commentaire}"></p>
+        </li>
+    </ul>
+</div>
+
+
+
+
+
+<!--
+<ul>
+    <li th:each="avis : ${film.avis}">
+        <span th:text="|${avis.membre.pseudo} a donné la note de ${avis.note}/5 avec le commentaire :|"></span>
+        <p class="commentaire" th:text="${avis.commentaire}"></p>
+    </li>
+</ul>
+-->
+
+
+
+
+
+<a th:href="|/admin/avis?pseudo=${membre.pseudo}|">Ajouter un avis au membre</a>
 
 </body>
 </html>

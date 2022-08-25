@@ -3,6 +3,7 @@ package com.example.projetgroupe.controller;
 import com.example.projetgroupe.bo.Avis;
 import com.example.projetgroupe.bo.Membres;
 import com.example.projetgroupe.security.Utilisateur;
+import com.example.projetgroupe.service.ArticleService;
 import com.example.projetgroupe.service.AvisService;
 import com.example.projetgroupe.service.MembresService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,52 +26,72 @@ public class AvisController {
     @Autowired
     private MembresService membresService;
 
+    @Autowired
+    private ArticleService articleService;
+
 
     @GetMapping("/avisMembre")
-    private String getAvisVendeur (Model model) {
-        model.addAttribute("listeAvis",avisService.listeAvis());
+    private String getAvisVendeur (String pseudo, Model model) {
+        Membres membre = membresService.getMembresById(pseudo);
+
+        membre.setListeAvis(avisService.findAvisByMembre(pseudo));
+        membre.setListeArticles(articleService.findArticleByMembre(pseudo));
+
+        model.addAttribute("membre", membre);
+
         return "affichageDetailVendeur";
     }
 
 
     @GetMapping("/admin/avis")
-    public String getAvis(String membreId, Model model) {
+    public String getAvis(String pseudo, Model model) {
+        Membres membre = membresService.getMembresById(pseudo);
+        model.addAttribute("membre", membre);
         model.addAttribute("avis", new Avis());
-        this.addMembreAuModel(model, membreId);
+
+        majModeleAvecListes(model);
         return "avisMembre";
     }
 
 
 
-        Membres membres = new Membres();
 
     @PostMapping("/admin/avis")
-    private String postAddAvis(@AuthenticationPrincipal Utilisateur utilisateurConnecte, @Valid Avis avis, BindingResult br, Model model) {
+    private String postAddAvis(String pseudo, @AuthenticationPrincipal Utilisateur utilisateurConnecte, @Valid Avis avis, BindingResult br, Model model) {
+
+        Membres membre = membresService.getMembresById(pseudo);
+        avis.setMembres(membre);
+
+        Membres auteur = utilisateurConnecte.getMembre();
+        avis.setAuteur(auteur);
 
 
         if (br.hasErrors()) {
-            majModeleAvecListes(model);
+            model.addAttribute("listeAvis",avisService.listeAvis());
+            model.addAttribute("listeArticles",articleService.listeArticles());
             return "avisMembre";
         }
+
         try {
 
-            avis.setMembres(utilisateurConnecte.getMembre());
             avisService.addAvis(avis);
         } catch (Exception e) {
             model.addAttribute("erreur", e.getMessage());
-            majModeleAvecListes(model);
+            model.addAttribute("listeAvis",avisService.listeAvis());
+            model.addAttribute("listeArticles",articleService.listeArticles());
             return "avisMembre";
         }
 
 
 
-        return "redirect:/avisMembre?id=" + avis.getMembres();
+        return "redirect:/avisMembre?pseudo=" + avis.getMembres().getPseudo();
 
     }
 
 
     private void majModeleAvecListes(Model model) {
         model.addAttribute("listeAvis", avisService.listeAvis());
+        model.addAttribute("listeArticles", articleService.listeArticles());
     }
 
 

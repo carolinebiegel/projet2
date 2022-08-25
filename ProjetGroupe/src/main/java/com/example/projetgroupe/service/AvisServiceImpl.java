@@ -21,7 +21,7 @@ public class AvisServiceImpl implements AvisService{
 
     @Override
     public void addAvis(Avis avis) {
-
+        avisRepository.save(avis);
     }
 
     @Override
@@ -31,6 +31,7 @@ public class AvisServiceImpl implements AvisService{
 
     @Override
     public List<Avis> findAvisByMembre(String pseudo) {
+
         return avisRepository.findAvisByMembresPseudo(pseudo);
     }
 
