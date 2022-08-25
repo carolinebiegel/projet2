@@ -19,4 +19,7 @@ public class Avis {
     @ManyToOne
     private Membres membres;
 
+    @ManyToOne
+    private Membres auteur;
+
 }

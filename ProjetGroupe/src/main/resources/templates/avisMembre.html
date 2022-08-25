@@ -19,7 +19,7 @@
 <!-- Pas besoin de champs de formulaire pour Membre et Film car on peut retrouver ces informations dans le controller-->
 
 <!-- ne pas oublier d'ajouter ?filmId=... à l'url du POST (car on veut récupérer l'id du film dans le POST également) -->
-<form th:action="@{/admin/avis}" method="post" th:object="${avis}">
+<form th:action="|/admin/avis?pseudo=${membre.pseudo}|" method="post" th:object="${avis}">
 
     <!-- Note -->
     <section class="form-element">
