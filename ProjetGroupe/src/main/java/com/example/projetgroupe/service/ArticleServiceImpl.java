@@ -23,6 +23,8 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Articles> listeArticles() {
+
+
         return articleRepository.findAll();
     }
 
@@ -35,4 +37,18 @@ public class ArticleServiceImpl implements ArticleService {
     public  List<Articles> findArticleByMembre(String pseudo) {
         return articleRepository.findArticlesByMembresPseudo(pseudo);
     }
+
+    @Override
+    public List<Articles> findArticleByKeyword(String keyword) {
+
+        if (keyword != null) {
+            return articleRepository.search(keyword);
+        }
+        return articleRepository.findAll();
+
+    }
+
+
+
+
 }

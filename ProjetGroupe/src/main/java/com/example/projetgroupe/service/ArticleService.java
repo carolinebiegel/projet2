@@ -13,5 +13,7 @@ public interface ArticleService {
     public Articles getArticleById(long id);
 
     List<Articles> findArticleByMembre(String pseudo);
+
+    List<Articles> findArticleByKeyword(String keyword);
 }
 

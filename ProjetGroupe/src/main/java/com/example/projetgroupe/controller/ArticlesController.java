@@ -8,6 +8,7 @@ import com.example.projetgroupe.service.ArticleService;
 import com.example.projetgroupe.service.MembresService;
 import com.example.projetgroupe.utils.FileUploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +16,12 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class ArticlesController {
@@ -32,10 +35,17 @@ public class ArticlesController {
     private MembresService membresService;
 
     @GetMapping("/")
-    private String getArticles (Model model) {
+    private String getArticles (Model model, @Param("keyword") String keyword) {
         model.addAttribute("listeArticles",articleService.listeArticles());
+        List<Articles> listProducts = articleService.findArticleByKeyword(keyword);
+        model.addAttribute("listProducts", listProducts);
+        model.addAttribute("keyword", keyword);
         return "affichageListeArticles";
     }
+
+
+
+
 
     @GetMapping("/admin/vendre")
     private String getArticleVendre(Model model) {
