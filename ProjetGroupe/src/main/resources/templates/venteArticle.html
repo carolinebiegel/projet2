@@ -14,7 +14,7 @@
 
 <h1>Vendre un Article</h1>
 
-<form th:action="@{/admin/vendre}" method="post" th:object="${article}">
+<form th:action="@{/admin/vendre}" method="post" th:object="${article}"  enctype="multipart/form-data">
 
     <section class="form-element">
         <label for="titre">Titre : </label>
@@ -66,10 +66,24 @@
         <span class="error" th:errors="*{genre}"></span>
     </section>
 
-    <section class="form-element">
-        <input type="file" onchange="previewFile()"><br>
-        <img src="" height="200" alt="Prévisualisation de l'image…">
+
+<!-- ajout d'une photo a l'article */ -->
+
+
+    <section
+    >
+
+        <div>
+
+            <label>Photos: </label>
+            <input type="file" name="image" accept="image/png, image/jpeg" />
+
+        </div>
+
     </section>
+
+
+
 
     <button>Validation</button>
 </form>
