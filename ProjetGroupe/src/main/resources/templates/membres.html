@@ -27,7 +27,7 @@
 	</table>
 
 	<div th:if="${membre.listeArticles}">
-		<h2>Liste des articles</h2>
+		<h2>Liste de mes articles</h2>
 
 		<ul>
 			<li th:each="article : ${membre.listeArticles}" th:text="${article.titre}"></li>
@@ -36,7 +36,7 @@
 	</div>
 
 	<div th:if="${membre.listeAvis}">
-		<h2>Liste des avis</h2>
+		<h2>Liste de mes avis</h2>
 
 		<ul>
 			<li th:each="avis : ${membre.listeAvis}">
