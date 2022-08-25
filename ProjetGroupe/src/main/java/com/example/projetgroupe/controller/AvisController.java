@@ -37,7 +37,8 @@ public class AvisController {
         model.addAttribute("membre", membresService.getMembresById(membreId));
     }
 
-    @PostMapping
+
+
     private String postAddAvis(String membreId, @AuthenticationPrincipal Utilisateur utilisateurConnecte, @Valid Avis avis, BindingResult br, Model model) {
 
         Membres membres = new Membres();
@@ -59,6 +60,7 @@ public class AvisController {
 
         return "redirect:/avisMembre?id=" + membres.getPseudo() ;
     }
+
 
     private void majModeleAvecListes(Model model) {
         model.addAttribute("listeMembres", membresService.listeMembres());

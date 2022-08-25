@@ -95,4 +95,6 @@ public class Utilisateur implements UserDetails {
 		return true;
 	}
 
+    public void setPhotos(String fileName) {
+    }
 }
