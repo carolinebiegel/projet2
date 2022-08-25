@@ -14,7 +14,7 @@ public class Articles {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private LocalDate datePublication;
+    private LocalDate datePublication = LocalDate.now();
     private String titre;
     private Genres genre;
     private String categorie;
@@ -28,5 +28,6 @@ public class Articles {
 
     @Column(nullable = true, length = 150)
     private String photos;
+
 
 }

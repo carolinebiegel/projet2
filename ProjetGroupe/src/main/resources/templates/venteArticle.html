@@ -23,9 +23,8 @@
     </section>
 
     <section class="form-element">
-        <label for="datePublication">Date de Publication : </label>
+        <div for="datePublication" th:text="*{datePublication}"> Date de Publication : </div>
         <!-- à la place de name j'utilise th:field -->
-        <input id="datePublication" type="date" th:field="*{datePublication}"/>
         <span class="error" th:errors="*{datePublication}"></span>
     </section>
 
