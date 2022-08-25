@@ -38,7 +38,7 @@ public class AvisController {
     }
 
 
-
+    @PostMapping
     private String postAddAvis(String membreId, @AuthenticationPrincipal Utilisateur utilisateurConnecte, @Valid Avis avis, BindingResult br, Model model) {
 
         Membres membres = new Membres();
@@ -47,7 +47,7 @@ public class AvisController {
             majModeleAvecListes(model);
             return "avisMembre";
         }
-        try{
+        try {
 
             avis.setMembres(utilisateurConnecte.getMembre());
             avisService.addAvis(avis);
@@ -58,16 +58,16 @@ public class AvisController {
         }
 
 
-        return "redirect:/avisMembre?id=" + membres.getPseudo() ;
+        return "redirect:/avisMembre?id=" + membres.getPseudo();
     }
 
 
     private void majModeleAvecListes(Model model) {
-        model.addAttribute("listeMembres", membresService.listeMembres());
+        model.addAttribute("listeAvis", avisService.listeAvis());
     }
 
 
-    }
+}
 
 
 
