@@ -38,9 +38,9 @@ public class AvisController {
     }
 
     @PostMapping
-    private String postAddAvis(@AuthenticationPrincipal Utilisateur utilisateurConnecte, @Valid Avis avis, BindingResult br, Model model) {
+    private String postAddAvis(String membreId, @AuthenticationPrincipal Utilisateur utilisateurConnecte, @Valid Avis avis, BindingResult br, Model model) {
 
-        Membres membres;
+        Membres membres = new Membres();
 
         if (br.hasErrors()) {
             majModeleAvecListes(model);
@@ -57,7 +57,7 @@ public class AvisController {
         }
 
 
-        return "redirect:/admin/profil" ;
+        return "redirect:/avisMembre?id=" + membres.getPseudo() ;
     }
 
     private void majModeleAvecListes(Model model) {
