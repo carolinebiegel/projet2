@@ -24,7 +24,6 @@ nav section button{
 }
 
 
-
 form .form-element{
 	margin-bottom: 10px;
 }
@@ -50,7 +49,7 @@ form  button{
 
 .commentaire{
 	padding : 10px;
-	background-color: #FE6F5E;
+	background-color: #FF9999;
 	font-style: italic;
 	width: fit-content;
 	margin-top: 5px;
@@ -81,13 +80,39 @@ form  button{
 	padding: 5px;
 }
 
-.col-sm-4 {
+.col-sm-3 {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	
+	grid-template-columns: 5fr 1fr;
+	float: none;
+	margin: 5rem;
 }
+
 
 img {
 	width : 220px;
 	height : 190px;
+}
+
+.card-body {
+	border: solid #FE4C40;
+	background-color: #FCF8E8;
+}
+
+.navbar-custom{
+	background-color: #FCF8E8;
+	border-bottom: solid #FE4C40;
+}
+
+.titre {
+	font-family: "Book Antiqua";
+	font-size: 5rem;
+	color: #FE4C40;
+	text-align: center;
+	margin-bottom: 5rem;
+	margin-top: 5rem;
+}
+
+.barre {
+	margin-left: 40rem;
+	margin-bottom: 5rem;
 }

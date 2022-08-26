@@ -13,14 +13,16 @@
 		  crossorigin="anonymous">
 </head>
 
-<body>
+<body class="body">
 <!-- je vais remplacer le contenu de ma balise avec celui de la balise head de mon template : fragments/template.html -->
 <nav th:replace="fragments/template :: nav"></nav>
 
 <!-- section pour afficher les messages de succès ou d'erreur -->
 <section th:replace="fragments/template :: messages"></section>
 
-<form th:action="@{/}">
+<h1 class="titre">Articles à vendre</h1>
+
+<form class="barre" th:action="@{/}">
 	Rechercher: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
 	&nbsp;
 	<input type="submit" value="Search" />
@@ -30,7 +32,6 @@
 
 
 
-	<h1>Articles à vendre</h1>
 
 <!--
 	<table class="table">
@@ -68,11 +69,11 @@
 
 
 <div class="row" th:fragment="list">
-	<div th:each="article : ${listeArticles}" class="col-sm-4">
+	<div th:each="article : ${listeArticles}" class="col-sm-3">
 		<div class="card mb-3">
 			<div class="card-body">
 				<h5 class="card-title" th:text="${article.titre}"></h5>
-				<img th:src="|images/${article.photos}|" width="200" />
+				<img th:src="|images/${article.photos}|" />
 				<p class="card-text" th:text="${article.datePublication}"></p>
 				<p class="card-text" th:text="${article.genre}"></p>
 				<p class="card-text" th:text="${article.categorie}"></p>
