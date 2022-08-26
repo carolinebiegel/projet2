@@ -39,25 +39,25 @@ form  button{
 	border : none;
 	padding : 7px;
 	font-size : 16px;
-	background-color: #16a085;
+	background-color: #FE4C40;
 	color: white;
 	margin-left: 100px;
 } 
 
 .confirmation{
-	color : green;
+	color : #FE4C40;
 }
 
 .commentaire{
 	padding : 10px;
-	background-color: lightgrey;
+	background-color: #FE6F5E;
 	font-style: italic;
 	width: fit-content;
 	margin-top: 5px;
 }
 
 .checkbox{
-	color : green;
+	color : #FE4C40;
 	text-align: center;
 	font-weight: 800;
 }
@@ -72,7 +72,7 @@ form  button{
 }
 
 .table thead tr{
-	background-color: #16a085;
+	background-color: #FE4C40;
 	color: white;
 }
 

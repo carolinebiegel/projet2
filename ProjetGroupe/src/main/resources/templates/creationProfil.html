@@ -10,7 +10,6 @@
 <body>
 
 
-<!-- section pour afficher les messages de succès ou d'erreur -->
 <section th:replace="fragments/template :: messages"></section>
 
 <h1>Création du profil :</h1>
@@ -20,20 +19,17 @@
 
         <section class="element-membre">
             <label for="pseudo">Veuillez saisir votre pseudo</label>
-            <!-- on va utiliser th:field a la place de name sur les input-->
             <input type="text" th:field="*{pseudo}" id="pseudo">
         </section>
 
         <section class="element-membre">
             <label for="password">Veuillez saisir votre mot de passe</label>
-            <!-- on va utiliser th:field a la place de name sur les input-->
             <input type="password" th:field="*{password}" id="password">
         </section>
 
 
         <section class="element-membre">
             <label for="admin">Voulez-vous être membre pour 10€/mois ?</label>
-            <!-- on va utiliser th:field a la place de name sur les input-->
             <input type="checkbox" th:field="*{admin}" id="admin">
         </section>
 

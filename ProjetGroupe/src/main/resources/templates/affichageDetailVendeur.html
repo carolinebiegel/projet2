@@ -42,21 +42,6 @@ xmlns:th="http://thymeleaf.org">
 
 
 
-
-
-<!--
-<ul>
-    <li th:each="avis : ${film.avis}">
-        <span th:text="|${avis.membre.pseudo} a donné la note de ${avis.note}/5 avec le commentaire :|"></span>
-        <p class="commentaire" th:text="${avis.commentaire}"></p>
-    </li>
-</ul>
--->
-
-
-
-
-
 <a th:href="|/admin/avis?pseudo=${membre.pseudo}|">Ajouter un avis au membre</a>
 
 </body>

@@ -23,15 +23,13 @@
     </section>
 
     <section class="form-element">
-
-        <div for="datePublication" th:text="*{datePublication}"> Date de Publication : </div>
-
+        <label for="datePublication" >Date de Publication : </label>
+        <span id="datePublication" th:text="*{datePublication}"></span>
         <span class="error" th:errors="*{datePublication}"></span>
     </section>
 
     <section class="form-element">
         <label for="description">Description : </label>
-        <!-- à la place de name j'utilise th:field -->
         <textarea id="description" th:field="*{description}" cols="30" rows="5"></textarea>
         <span class="error" th:errors="*{description}"></span>
     </section>
@@ -80,8 +78,6 @@
         </div>
 
     </section>
-
-
 
 
     <button>Validation</button>

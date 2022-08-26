@@ -24,7 +24,6 @@
     <!-- Note -->
     <section class="form-element">
         <label for="note">Note (/5) : </label>
-        <!-- à la place de name j'utilise th:field -->
         <input id="note" type="number" th:field="*{note}"/>
         <span class="error" th:errors="*{note}"></span>
     </section>
@@ -32,13 +31,11 @@
     <!-- Commentaire -->
     <section class="form-element">
         <label for="commentaire">Commentaire : </label>
-        <!-- à la place de name j'utilise th:field -->
         <textarea id="commentaire" th:field="*{commentaire}" cols="30" rows="10"></textarea>
         <span class="error" th:errors="*{commentaire}"></span>
     </section>
 
     <button>Validation</button>
-
 
 
 

@@ -29,7 +29,7 @@
 		<!-- on n'affiche cette section que pour les utilisateurs connectés -->
 		<section sec:authorize="isAuthenticated()">
 			<!-- ${#authentication.name}" : recupère le username de l'utilisateur connecté-->
-		<!--	<span th:text="|Vous êtes connecté avec l'utilisateur : ${#authentication.name}|"></span> -->
+		<span th:text="|Vous êtes connecté avec l'utilisateur : ${#authentication.name}|"></span>
 			<!-- on offre la possibilité de se déconnecter -->
 			<form th:action="@{/logout}" method="post">
 				<button>Se déconnecter</button>
