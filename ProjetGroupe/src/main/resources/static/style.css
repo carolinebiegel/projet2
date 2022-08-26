@@ -68,7 +68,7 @@ form  button{
 
 .table{
 	border-collapse: collapse;
-	border: 1px solid black;
+
 }
 
 .table thead tr{
@@ -80,4 +80,14 @@ form  button{
 	border: 1px solid black;
 	padding: 5px;
 }
+
+.col-sm-4 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 	
+}
+
+img {
+	width : 220px;
+	height : 190px;
+}
