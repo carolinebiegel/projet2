@@ -12,10 +12,13 @@ public interface ArticleRepository extends JpaRepository<Articles, Long> {
             + " OR p.description LIKE %?1%"
             + " OR p.categorie LIKE %?1%"
             )
+
     public List<Articles> search(String keyword);
 
 
 
     public List<Articles> findArticlesByMembresPseudo(String pseudo);
+
+    public List<Articles> findByTitreStartingWith(String titre);
 
 }

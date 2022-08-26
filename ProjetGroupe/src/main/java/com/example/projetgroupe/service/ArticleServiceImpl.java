@@ -42,7 +42,7 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Articles> findArticleByKeyword(String keyword) {
 
         if (keyword != null) {
-            return articleRepository.search(keyword);
+            return articleRepository.findByTitreStartingWith(keyword);
         }
         return articleRepository.findAll();
 

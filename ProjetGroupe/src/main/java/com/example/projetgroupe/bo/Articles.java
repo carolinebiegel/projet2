@@ -20,6 +20,7 @@ public class Articles {
     private String categorie;
     private String description;
     private String etat;
+    private long prix;
 
     @ManyToOne
     private Membres membres;

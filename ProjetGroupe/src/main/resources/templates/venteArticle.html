@@ -29,6 +29,12 @@
     </section>
 
     <section class="form-element">
+        <label for="prix" >Prix de vente : </label>
+        <input id="prix" type="text" th:field="*{prix}"/>
+        <span class="error" th:errors="*{prix}"></span>
+    </section>
+
+    <section class="form-element">
         <label for="description">Description : </label>
         <textarea id="description" th:field="*{description}" cols="30" rows="5"></textarea>
         <span class="error" th:errors="*{description}"></span>

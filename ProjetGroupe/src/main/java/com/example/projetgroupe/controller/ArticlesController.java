@@ -35,10 +35,9 @@ public class ArticlesController {
     private MembresService membresService;
 
     @GetMapping("/")
-    private String getArticles (Model model, @Param("keyword") String keyword) {
-        model.addAttribute("listeArticles",articleService.listeArticles());
+    private String getArticles (Model model, String keyword) {
         List<Articles> listProducts = articleService.findArticleByKeyword(keyword);
-        model.addAttribute("listProducts", listProducts);
+        model.addAttribute("listeArticles", listProducts);
         model.addAttribute("keyword", keyword);
         return "affichageListeArticles";
     }

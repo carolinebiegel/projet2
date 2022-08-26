@@ -6,6 +6,7 @@ nav{
 nav li{
 	display: inline-block;
 	margin: 20px;
+	text-decoration: none;
 }
 
 nav section{
@@ -65,21 +66,6 @@ form  button{
 	color : red;
 }
 
-.table{
-	border-collapse: collapse;
-
-}
-
-.table thead tr{
-	background-color: #FE4C40;
-	color: white;
-}
-
-.table td, .table th{
-	border: 1px solid black;
-	padding: 5px;
-}
-
 .col-sm-3 {
 	display: grid;
 	grid-template-columns: 5fr 1fr;
@@ -96,6 +82,19 @@ img {
 .card-body {
 	border: solid #FE4C40;
 	background-color: #FCF8E8;
+	text-align: center;
+}
+
+.information {
+	color: #FE4C40;
+}
+
+.article {
+	color: black;
+}
+
+.card-text{
+	color: black;
 }
 
 .navbar-custom{
@@ -104,7 +103,7 @@ img {
 }
 
 .titre {
-	font-family: "Book Antiqua";
+	font-family: "Bright DEMO";
 	font-size: 5rem;
 	color: #FE4C40;
 	text-align: center;
@@ -115,4 +114,68 @@ img {
 .barre {
 	margin-left: 40rem;
 	margin-bottom: 5rem;
+}
+
+
+button {
+	webkit-animation: 1s linear infinite condemed_blink_effect;
+	animation: 1s linear infinite condemed_blink_effect;
+	border: solid #FE4C40;
+}
+	@-webkit-keyframes condemed_blink_effect {
+0% {
+	visibility: hidden;  }
+		50% {    visibility: hidden;  }
+		100% {    visibility: visible;  }
+		from {
+			color: #6666ff;
+		}
+		10% {
+			color: #0099ff;
+		}
+		50% {
+			color: #00ff00;
+		}
+		75% {
+			color: #ff3399;
+		}
+		100% {
+			color: #6666ff;
+		}
+
+	}
+@keyframes condemed_blink_effect {
+	0% {    visibility: hidden;  }
+	50% {    visibility: hidden;}
+	100% {visibility: visible;}
+	from {
+		color: #6666ff;
+	}
+	10% {
+		color: #0099ff;
+	}
+	50% {
+		color: #00ff00;
+	}
+	75% {
+		color: #ff3399;
+	}
+	100% {
+		color: #6666ff;
+	}
+
+}
+
+@font-face {
+	font-family: Bright DEMO;
+	src: url('font/Bright DEMO.otf');
+}
+
+.emoji{
+	font-size: 20pt;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
 }

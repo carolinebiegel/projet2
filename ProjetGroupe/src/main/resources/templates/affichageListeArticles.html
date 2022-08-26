@@ -20,7 +20,7 @@
 <!-- section pour afficher les messages de succès ou d'erreur -->
 <section th:replace="fragments/template :: messages"></section>
 
-<h1 class="titre">Articles à vendre</h1>
+<h1 class="titre">ARTICLES A VENDRE</h1>
 
 <form class="barre" th:action="@{/}">
 	Rechercher: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
@@ -32,54 +32,64 @@
 
 
 
-
-<!--
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Article</th>
-				<th>Date publication</th>
-				<th>Genre</th>
-				<th>Categorie</th>
-				<th>Description</th>
-				<th>Etat</th>
-				<th>Membre</th>
-				<th>Image</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			<tr th:each="article : ${listeArticles}">
-				<td th:text="${article.titre}"></td>
-				<td th:text="${article.datePublication}"></td>
-				<td th:text="${article.genre}"></td>
-				<td th:text="${article.categorie}"></td>
-				<td th:text="${article.description}"></td>
-				<td th:text="${article.etat}"></td>
-				<td><a th:href="|avisMembre?pseudo=${membre.pseudo}|" th:each="membre : ${article.membres}" th:text="${membre.pseudo}"></a></td>
-				<td><img th:src="|images/${article.photos}|" width="80" /></td>
-
-
-    </tr>
-    </tbody>
-
-
-</table>
--->
-
-
 <div class="row" th:fragment="list">
 	<div th:each="article : ${listeArticles}" class="col-sm-3">
 		<div class="card mb-3">
 			<div class="card-body">
 				<h5 class="card-title" th:text="${article.titre}"></h5>
 				<img th:src="|images/${article.photos}|" />
-				<p class="card-text" th:text="${article.datePublication}"></p>
-				<p class="card-text" th:text="${article.genre}"></p>
-				<p class="card-text" th:text="${article.categorie}"></p>
-				<p class="card-text" th:text="${article.description}"></p>
-				<p class="card-text" th:text="${article.etat}"></p>
-				<a th:href="|avisMembre?pseudo=${membre.pseudo}|" th:each="membre : ${article.membres}" th:text="${membre.pseudo}" class="btn btn-outline-danger"></a>
+
+
+				<table class="table">
+					<thead>
+
+					<tr>
+						<td class="information">Date de publication :</td>
+						<td class="article" th:text="${article.datePublication}"></td>
+					</tr>
+
+					<tr>
+						<td class="information">Article :</td>
+						<td class="article" th:text="${article.titre}"></td>
+					</tr>
+
+					<tr>
+						<td class="information">Genre :</td>
+						<td class="article" th:text="${article.genre}"></td>
+					</tr>
+
+					<tr>
+						<td class="information">Catégorie :</td>
+						<td class="article" th:text="${article.categorie}"></td>
+					</tr>
+
+					<tr>
+						<td class="information">Description :</td>
+						<td class="article" th:text="${article.description}"></td>
+					</tr>
+
+					<tr>
+						<td class="information">Etat :</td>
+						<td class="article" th:text="${article.etat}"></td>
+					</tr>
+
+					<tr>
+						<td class="information">Prix :</td>
+						<td class="article" th:text="|${article.prix} €|">
+						</td>
+					</tr>
+
+					<tr>
+						<td class="information">Membre :</td>
+						<td><a th:href="|avisMembre?pseudo=${membre.pseudo}|" th:each="membre : ${article.membres}" th:text="${membre.pseudo}" class="btn btn-outline-danger"></a></td>
+					</tr>
+
+
+					</thead>
+				</table>
+
+				<button>BUY NOW</button>
+
 			</div>
 		</div>
 	</div>
