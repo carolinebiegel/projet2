@@ -7,6 +7,7 @@ nav li{
 	display: inline-block;
 	margin: 20px;
 	text-decoration: none;
+	margin-left: 10rem;
 }
 
 nav section{
@@ -171,11 +172,13 @@ button {
 	src: url('font/Bright DEMO.otf');
 }
 
-.emoji{
+.emoji a {
 	font-size: 20pt;
 	text-align: center;
+	text-decoration: none;
 }
 
-a {
-	text-decoration: none;
+h1, h2 {
+	font-family: "Bright DEMO";
+	color: #FE4C40;
 }

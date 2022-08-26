@@ -12,7 +12,7 @@
 
 <section th:replace="fragments/template :: messages"></section>
 
-<h1>Création du profil :</h1>
+<h1 class="creat">Creation du profil :</h1>
 
 <div class="container">
     <form th:action="@{/creationProfil}" method="post" th:object="${membres}">
@@ -33,7 +33,7 @@
             <input type="checkbox" th:field="*{admin}" id="admin">
         </section>
 
-        <button type="submit" class="btn btn-primary">Création du profil</button>
+        <button type="submit" class="btn btn-outline-danger">Création du profil</button>
     </form>
 
     </tbody>
