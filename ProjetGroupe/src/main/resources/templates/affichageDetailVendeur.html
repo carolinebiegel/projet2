@@ -34,12 +34,11 @@ xmlns:th="http://thymeleaf.org">
 
     <ul>
         <li th:each="avis : ${membre.listeAvis}">
-            <span th:text="|${avis.auteur.pseudo} a commenté : |"></span>
+            <span th:text="|${avis.auteur.pseudo} a donné la note de ${avis.note}/5 et a commenté : |"></span>
             <p class="commentaire" th:text="${avis.commentaire}"></p>
         </li>
     </ul>
 </div>
-
 
 
 <a th:href="|/admin/avis?pseudo=${membre.pseudo}|">Ajouter un avis au membre</a>
